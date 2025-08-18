@@ -3,35 +3,29 @@ import java.time.LocalDate;
 
 public class Pessoa implements Comparable<Pessoa> {
 	private String nome;
-	private LocalDate dataNascimento;
+	private LocalDate dataBirthDay;
 
 	public Pessoa(String nome, LocalDate dataNascimento) {
 		this.nome = nome;
-		this.dataNascimento = dataNascimento;
+		this.dataBirthDay = dataNascimento;
 	}
 
 	public String getNome() {
 		return nome;
 	}
 
-	public LocalDate getDataNascimento() {
-		return dataNascimento;
+	public LocalDate getDataBirthDay() {
+		return dataBirthDay;
 	}
 
 	@Override
 	public String toString() {
-		return "Pessoa{" + "nome='" + nome + '\'' + ", dataNascimento=" + dataNascimento + '}';
+		return "Pessoa{" + "nome='" + nome + '\'' + ", dataNascimento=" + dataBirthDay + '}';
 	}
-	/*
-	// implementar comparable compareTo
-	@Override
-	public int compareTo(Pessoa outra) {
-		return this.nome.compareTo(outra.nome);
-	}*/
 
 	@Override
 	public int compareTo(Pessoa outra) {
-		return this.dataNascimento.compareTo(outra.dataNascimento);
+		return this.nome.compareTo(outra.nome);
 	}
 
 	@Override

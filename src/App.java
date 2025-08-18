@@ -23,7 +23,38 @@ public class App {
 	static Scanner leia = new Scanner(System.in); // instância do Scanner
 
 	public static void main(String[] args) throws Exception {
-		Integer[] arquivoCarregado = carregarArquivo("vetor_ordenado.txt");
+		Integer[] arquivoCarregado = carregarArquivo("numeros_aleatorios.txt");
+		Integer[] arquivoCarregado2 = carregarArquivo("numeros_aleatorios2.txt");
+		SelectionSort<Integer> selectionSort = new SelectionSort<>();
+		BubbleSort<Integer> bubbleSort = new BubbleSort<>();
+		
+		// Usando Selection Sort
+		System.out.println("Vetor antes de ordenar: " + 
+					Arrays.toString(arquivoCarregado));
+		selectionSort.sort(arquivoCarregado);
+		System.out.println("Pessoas depois de ordenar Usando Selection Sort: " + 
+					Arrays.toString(arquivoCarregado));
+
+		// Usando Bubble Sort
+		System.out.println("Vetor antes de ordenar: " + 
+					Arrays.toString(arquivoCarregado2));
+
+		bubbleSort.sort(arquivoCarregado2);
+		System.out.println("Pessoas depois de ordenar Usando Bubble Sort: " + 
+					Arrays.toString(arquivoCarregado2));
+		
+		/*
+		Comparator<Pessoa> comparatorData = (a,b) ->  a.getDataBirthDay().compareTo(b.getDataBirthDay());
+		// Comparator<Pessoa> comparatorData = (a,b) ->  a.getDataBirthDay().compareTo(b.getDataBirthDay()); max for min
+		SelectionSort<Pessoa> selectionSort = new SelectionSort<>();
+		
+		System.out.println("Pessoas antes de ordenar: " + 
+				Arrays.toString(vetorPessoas));
+		selectionSort.sort(vetorPessoas,comparatorData);
+		System.out.println("Pessoas depois de ordenar: " + 
+				Arrays.toString(vetorPessoas));
+		
+		Integer[] arquivoCarregado = carregarArquivo("numeros_aleatorios.txt");
 
 		System.out.println("Vetor antes de ordenar:: " + Arrays.toString(arquivoCarregado));
 
@@ -37,7 +68,7 @@ public class App {
 		BubbleSort<Pessoa> bsortPessoa = new BubbleSort<>();
 		// Criar comparator por data de nascimento
 		bsortPessoa.sort(vetorPessoas);
-		System.out.println("Pessoas depois de ordenar: " + Arrays.toString(vetorPessoas));
+		System.out.println("Pessoas depois de ordenar: " + Arrays.toString(vetorPessoas));*/
 
 	} // fim do main
 } // fim da classe App
