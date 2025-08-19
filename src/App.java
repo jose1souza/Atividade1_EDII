@@ -35,6 +35,7 @@ public class App {
 		System.out.println("Pessoas depois de ordenar Usando Selection Sort: " + 
 					Arrays.toString(arquivoCarregado));
 
+		System.out.println("/--------------------------------------------------/");
 		// Usando Bubble Sort
 		System.out.println("Vetor antes de ordenar: " + 
 					Arrays.toString(arquivoCarregado2));

@@ -12,8 +12,8 @@ public class SelectionSort<T> {
 		int smallIndex = position;
 
 		for (int i = position + 1; i < array.length; i++) {
+			this.numberComparations = this.numberComparations + 1;
 			if (comparator.compare(array[i], array[smallIndex]) < 0) {
-				this.numberComparations = this.numberComparations + 1;
 				smallIndex = i;
 			}
 		}
@@ -34,6 +34,7 @@ public class SelectionSort<T> {
 	
 	public T[] sortFlag(T[]array,Comparator<T> comparator) {
 		int exchanges = 0;
+		this.numberComparations = 0;
 		for(int i = 0;i < array.length - 1;i++) {
 			exchanges = exchanges + 1;
 			int smallIndex = indexOfSmallestValueVector(array,i,comparator);

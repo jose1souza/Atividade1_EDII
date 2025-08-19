@@ -43,17 +43,17 @@ public class BubbleSort<T> {
 		return array;
 	} // fim do metódo sort
 	
-	public T[] sortFlag(T[] array, Comparator<T> comparator, boolean verbose) {
+	public T[] sortFlag(T[] array, Comparator<T> comparator) {
 		Scanner leia = new Scanner(System.in);
 		int exchanges = 0, numberComparations = 0;
 
-		if (verbose == true) {
+		// if (verbose == true) {
 			int numberOfElements = array.length;
 			for (int fase = 1; fase < numberOfElements; fase++) {
 				boolean exchange = false;
-				System.out.println("Fase: " + fase); // mostrando a cada fase
-				System.out.println(Arrays.toString(array));// como o vetor está durante a fase
-				leia.nextLine(); // pause
+				//System.out.println("Fase: " + fase); // mostrando a cada fase
+				//System.out.println(Arrays.toString(array));// como o vetor está durante a fase
+				//leia.nextLine(); // pause
 				for (int comparacoes = 0; comparacoes < numberOfElements - fase; comparacoes++) {
 					numberComparations = numberComparations + 1;
 					if (comparator.compare(array[comparacoes], array[comparacoes + 1]) > 0) {
@@ -67,14 +67,14 @@ public class BubbleSort<T> {
 					break;
 				}
 			}
-		}
+		// }
 		System.out.println("Comparations: " + numberComparations);
 		System.out.println("Exchanges: " + exchanges);
 		return array;
 	}
 
 	public T[] sort(T[] array) { // Este vai pegar o comparator e passar para o sort independente de seu tipo
-		return sortFlag(array, (a, b) -> ((Comparable<T>) a).compareTo(b),true);
+		return sortFlag(array, (a, b) -> ((Comparable<T>) a).compareTo(b));
 	}
 } // fim da classe
 
