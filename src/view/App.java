@@ -1,4 +1,11 @@
+package view;
 import java.util.*;
+
+import model.BubbleSort;
+import model.Pessoa;
+import model.SelectionSort;
+import model.SortObserver;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -27,6 +34,8 @@ public class App {
 		Integer[] arquivoCarregado2 = carregarArquivo("numeros_aleatorios2.txt");
 		SelectionSort<Integer> selectionSort = new SelectionSort<>();
 		BubbleSort<Integer> bubbleSort = new BubbleSort<>();
+		SortObserver observer = new SortObserver();
+		selectionSort.setObserver(observer);
 		
 		// Usando Selection Sort
 		System.out.println("Vetor antes de ordenar: " + 
@@ -39,6 +48,7 @@ public class App {
 		// Usando Bubble Sort
 		System.out.println("Vetor antes de ordenar: " + 
 					Arrays.toString(arquivoCarregado2));
+		//bubbleSort.sort(observer);
 
 		bubbleSort.sort(arquivoCarregado2);
 		System.out.println("Pessoas depois de ordenar Usando Bubble Sort: " + 

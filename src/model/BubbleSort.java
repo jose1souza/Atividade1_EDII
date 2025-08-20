@@ -1,10 +1,13 @@
+package model;
 import java.util.*;
 
-public class BubbleSort<T> {
+public class BubbleSort<T> extends ObservableSort{
+	
 	private void troca(T[] array, int i, int j) {
 		T temporaria = array[i]; // armazena temporariamente
 		array[i] = array[j]; // substitui os valores de i e j
 		array[j] = temporaria;
+		notificationExchanges(i,j);
 	} // fim do metódo troca
 
 	public T[] sort(T[] array, Comparator<T> comparator) {
@@ -12,12 +15,14 @@ public class BubbleSort<T> {
 		for (int fase = 1; fase < numberOfElements; fase++) {
 			for (int comparacoes = 0; comparacoes < numberOfElements - fase; comparacoes++) { // percorre até o ultimo que não está
 																				// organizado
+				notificationComparison(comparacoes,comparacoes+1);
 				if (comparator.compare(array[comparacoes], array[comparacoes + 1]) > 0) { // compara se o primeiro valor
 																							// é maior que o próximo
 					troca(array, comparacoes, comparacoes + 1); // troca se for maior
 				} // fim do if
 			} // fim do for de comparacoes
 		} // fim do for da fase
+		notificationEnd();
 		return array;
 	} // fim do metódo sort
 
@@ -62,7 +67,7 @@ public class BubbleSort<T> {
 						exchanges = exchanges + 1;
 					}
 				}
-				if (exchange == false && exchanges == 0) {
+				if (!exchange) {
 					System.out.println("Este vetor já está ordenado!");
 					break;
 				}
@@ -74,7 +79,7 @@ public class BubbleSort<T> {
 	}
 
 	public T[] sort(T[] array) { // Este vai pegar o comparator e passar para o sort independente de seu tipo
-		return sortFlag(array, (a, b) -> ((Comparable<T>) a).compareTo(b));
+		return sort(array, (a, b) -> ((Comparable<T>) a).compareTo(b));
 	}
 } // fim da classe
 
