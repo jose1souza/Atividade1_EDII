@@ -2,6 +2,7 @@ package view;
 import java.util.*;
 
 import model.BubbleSort;
+import model.InsertionSort;
 import model.Pessoa;
 import model.SelectionSort;
 import model.SortObserver;
@@ -30,62 +31,50 @@ public class App {
 	static Scanner leia = new Scanner(System.in); // instância do Scanner
 
 	public static void main(String[] args) throws Exception {
+		long start,finish;
 		Integer[] arquivoCarregado = carregarArquivo("numeros_aleatorios.txt");
 		Integer[] arquivoCarregado2 = carregarArquivo("numeros_aleatorios2.txt");
+		Integer[] arquivoCarregado3 = carregarArquivo("numeros_aleatorios3.txt");
 		SelectionSort<Integer> selectionSort = new SelectionSort<>();
 		BubbleSort<Integer> bubbleSort = new BubbleSort<>();
 		SortObserver observer = new SortObserver();
-		selectionSort.setObserver(observer);
+		//selectionSort.setObserver(observer);
+		InsertionSort<Integer> insertionSort = new InsertionSort<>();
+		SortObserver observerInsertion = new SortObserver();
+		//selectionSort.setObserver(observerInsertion);
 		
 		// Usando Selection Sort
 		System.out.println("Vetor antes de ordenar: " + 
 					Arrays.toString(arquivoCarregado));
+		start = System.nanoTime();
 		selectionSort.sort(arquivoCarregado);
+		finish = System.nanoTime();
 		System.out.println("Pessoas depois de ordenar Usando Selection Sort: " + 
 					Arrays.toString(arquivoCarregado));
-
+		System.out.println("Tempo em ms: "+ (finish - start));
 		System.out.println("/--------------------------------------------------/");
 		// Usando Bubble Sort
 		System.out.println("Vetor antes de ordenar: " + 
 					Arrays.toString(arquivoCarregado2));
 		//bubbleSort.sort(observer);
-
+		start = System.nanoTime();
 		bubbleSort.sort(arquivoCarregado2);
+		finish = System.nanoTime();
 		System.out.println("Pessoas depois de ordenar Usando Bubble Sort: " + 
 					Arrays.toString(arquivoCarregado2));
+		System.out.println("Tempo em ms: "+ (finish - start));
+		System.out.println("/--------------------------------------------------/");
+		// Usando Insertion Sort
+				System.out.println("Vetor antes de ordenar: " + 
+							Arrays.toString(arquivoCarregado3));
+				//insertionSort.sort(observerInsertion);
+				start = System.nanoTime();
+				
+				insertionSort.sort(arquivoCarregado3);
+				finish = System.nanoTime();
+				System.out.println("Pessoas depois de ordenar Usando Insertion Sort: " + 
+							Arrays.toString(arquivoCarregado3));
+				System.out.println("Tempo em ms: "+ (finish - start));
 		
-		/*
-		Comparator<Pessoa> comparatorData = (a,b) ->  a.getDataBirthDay().compareTo(b.getDataBirthDay());
-		// Comparator<Pessoa> comparatorData = (a,b) ->  a.getDataBirthDay().compareTo(b.getDataBirthDay()); max for min
-		SelectionSort<Pessoa> selectionSort = new SelectionSort<>();
-		
-		System.out.println("Pessoas antes de ordenar: " + 
-				Arrays.toString(vetorPessoas));
-		selectionSort.sort(vetorPessoas,comparatorData);
-		System.out.println("Pessoas depois de ordenar: " + 
-				Arrays.toString(vetorPessoas));
-		
-		Integer[] arquivoCarregado = carregarArquivo("numeros_aleatorios.txt");
-
-		System.out.println("Vetor antes de ordenar:: " + Arrays.toString(arquivoCarregado));
-
-		BubbleSort<Integer> bsortInteger = new BubbleSort<>();
-		bsortInteger.sort(arquivoCarregado);
-		System.out.println("Vetor depois de ordenar:" + Arrays.toString(arquivoCarregado));
-
-		Pessoa[] vetorPessoas = vetorDePessoas();
-		System.out.println("Pessoas antes de ordenar: " + Arrays.toString(vetorPessoas));
-
-		BubbleSort<Pessoa> bsortPessoa = new BubbleSort<>();
-		// Criar comparator por data de nascimento
-		bsortPessoa.sort(vetorPessoas);
-		System.out.println("Pessoas depois de ordenar: " + Arrays.toString(vetorPessoas));*/
-
 	} // fim do main
 } // fim da classe App
-
-/* Número 2 da atividade
-  	Fases: 87
-  	Comparations: 4872
-	Exchanges: 2343
-  */
